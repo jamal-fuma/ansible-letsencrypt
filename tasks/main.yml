@@ -27,3 +27,4 @@
   with_items:
     - path: "/opt/{{ vendor_name }}"
     - path: "/opt/{{ vendor_name }}/bin"
+    - path: "{{ letsencrypt_webroot }}"
