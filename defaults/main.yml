@@ -4,3 +4,5 @@ certbot_repo: https://github.com/letsencrypt/letsencrypt
 certbot_dir: /opt/letsencrypt
 certbot_version: master
 certbot_keep_updated: yes
+
+vendor_name: "ansible-user"
