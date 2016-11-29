@@ -17,12 +17,13 @@
   - git
 
 # add directory for vendor files
-- file:
+- name: "Create vendor directories for certbot scripts"
+  file:
     path: "{{ item.path }}"
-    state: "{{ item.state || default('directory') }}"
-    owner: "{{ item.owner || default('root') }}"
-    group: "{{ item.group || default('root) }}"
-    mode: "{{ item.mode || default('0755') }}"
+    state: "{{ item.state | default('directory') }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root) }}"
+    mode: "{{ item.mode | default('0755') }}"
   with_items:
     - path: "/opt/{{ vendor_name }}"
     - path: "/opt/{{ vendor_name }}/bin"
