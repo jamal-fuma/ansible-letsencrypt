@@ -39,3 +39,18 @@
     mode: "{{ item.mode | default('0755') }}"
   with_items:
     - name: "provision.sh"
+
+# determine if certificate is present
+- name: "Register presence of certificate"
+  stat:
+    path: "/etc/letsencrypt/live/{{ computername }}/fullchain.pem"
+  register: certificate_presence
+
+# generate
+- name: "Generate certificate"
+  shell: "/opt/{{ vendor_name }}/bin/provision.sh"
+  when: '( certificate_presence.stat.exists == False )'
+  register: out
+
+- debug: var=out.stdout_lines
+  when: '( certificate_presence.stat.exists == False )'
