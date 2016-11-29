@@ -3,8 +3,8 @@
 
 - name: installing packages
   apt:
-	name: "git"
-	state: installed
+    name: "git"
+    state: installed
 
 - name: Clone Certbot into configured directory.
   git:
