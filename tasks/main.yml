@@ -28,3 +28,14 @@
     - path: "/opt/{{ vendor_name }}"
     - path: "/opt/{{ vendor_name }}/bin"
     - path: "{{ letsencrypt_webroot }}"
+
+# install helper scripts
+- name: "Install helper scripts"
+  template:
+    dest: "/opt/{{ vendor_name }}/bin/{{ item.name }}"
+    src: "templates/{{ item.name }}.j2"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0755') }}"
+  with_items:
+    - name: "provision.sh"

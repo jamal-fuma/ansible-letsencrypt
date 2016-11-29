@@ -1,0 +1,16 @@
+#!/bin/sh
+
+cd {{ certbot_dir }} \
+    && ./letsencrypt-auto certonly \
+     --non-interactive \
+     --webroot --webroot-path {{ letsencrypt_webroot }} \
+{% if letsencrypt_account != '' %}
+     --account "{{ letsencrypt_account }}" \
+{% endif %}
+     --agree-tos \
+     --text \
+     --keep \
+     --email "{{ letsencrypt_email }}" {% for domain in letsencrypt_domains  %} -d {{ domain }} {% endfor %}
+
+# {{ ansible_managed }}
+

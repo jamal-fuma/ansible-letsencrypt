@@ -8,3 +8,6 @@ certbot_keep_updated: yes
 vendor_name: "ansible-user"
 
 letsencrypt_webroot: "/var/www/letsencrypt"
+letsencrypt_email: ""
+letsencrypt_account: ""
+letsencrypt_domains: []
